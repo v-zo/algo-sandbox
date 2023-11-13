@@ -17,8 +17,8 @@ describe('traverseGraphGenerator', () => {
 
       return {
         isEmpty: () => stack.length === 0,
-        add: (id: string) => stack.unshift(id),
-        pull: () => stack.pop()
+        put: (id: string) => stack.push(id),
+        extract: () => stack.pop()
       }
     }
 
@@ -67,7 +67,7 @@ describe('traverseGraphGenerator', () => {
       const generator = createTraverseGenerator(operator, scheduler)
       const result = generator(multiEdgeGraph, 'A')
 
-      const expectedTraversalMultiEdge = ['alpha', 'beta', 'gamma', 'delta']
+      const expectedTraversalMultiEdge = ['alpha', 'beta', 'delta', 'gamma']
       expect(Array.from(result)).toEqual(expectedTraversalMultiEdge)
     })
 
